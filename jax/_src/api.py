@@ -109,7 +109,8 @@ flags.DEFINE_bool(
     "Set this to `False` only if it crashes otherwise and report "
     "the error to the jax-team.")
 flags.DEFINE_bool(
-    "experimental_cpp_pmap", bool_env("JAX_CPP_PMAP", False),
+    "experimental_cpp_pmap",
+    bool_env("JAX_CPP_PMAP", jax.lib._xla_extension_version >= 38),
     "A temporary flag enabling the C++ jax.pmap fast path. Until the default "
     "is switched to True, the feature is not supported and possibly broken "
     "(e.g. it may use unreleased code from jaxlib.")
